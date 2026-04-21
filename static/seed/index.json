@@ -1,0 +1,16 @@
+{
+	"version": 1,
+	"updated_at": "2026-04-21",
+	"novels": [
+		{ "slug": "welcome", "cover": "/brand/shwesar_logo.png" },
+		{ "slug": "udhr-article-1", "cover": null },
+		{ "slug": "udhr-article-2", "cover": null },
+		{ "slug": "udhr-article-3", "cover": null },
+		{ "slug": "demo-padauk-tree", "cover": null },
+		{ "slug": "demo-yangon-morning", "cover": null },
+		{ "slug": "demo-tea-shop", "cover": null },
+		{ "slug": "demo-rainy-season", "cover": null },
+		{ "slug": "demo-tortoise-hare", "cover": null },
+		{ "slug": "demo-typography-test", "cover": null }
+	]
+}

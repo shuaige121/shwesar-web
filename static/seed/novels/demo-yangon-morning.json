@@ -1,0 +1,18 @@
+{
+	"slug": "demo-yangon-morning",
+	"title_my": "ရန်ကုန် နံနက်",
+	"title_en": "Yangon Morning (demo)",
+	"author": "ShweSar Demo",
+	"language": "my",
+	"source": "demo",
+	"license": "demo",
+	"cover_url": null,
+	"description": "Short demo paragraph describing a morning in Yangon. Placeholder content for the reader UI.",
+	"chapters": [
+		{
+			"idx": 0,
+			"title": "နံနက် ၆ နာရီ",
+			"body_my": "ရန်ကုန် မြို့ ၏ နံနက် ၆ နာရီ။ မီးရထား သံ၊ ဘတ်စ်ကား ၏ ဟွန်း သံ နှင့် လက်ဖက်ရည် ဆိုင် မှ ထွက် လာ သော အနံ့ တို့ သည် မြို့ ကို နိုးထ စေ ပါ သည်။ ကျောင်း သား များ ကျောင်း ဝတ်စုံ ဖြူ ဖြူ နှင့် လမ်း ပေါ် တွင် တွေ့ နိုင် သည်။\n\nThis is demo content, written to verify Padauk rendering and scroll behavior on the reader. Replace with a real story when content is licensed."
+		}
+	]
+}

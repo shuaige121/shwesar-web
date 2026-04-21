@@ -1,0 +1,23 @@
+{
+	"slug": "demo-tortoise-hare",
+	"title_my": "လိပ် နှင့် ယုန်",
+	"title_en": "The Tortoise and the Hare (demo)",
+	"author": "Aesop (demo retelling)",
+	"language": "my",
+	"source": "folktale",
+	"license": "demo",
+	"cover_url": null,
+	"description": "Brief demo retelling of Aesop's tortoise and hare. Placeholder text — replace with a verified translation before publishing.",
+	"chapters": [
+		{
+			"idx": 0,
+			"title": "ပြိုင်ပွဲ စ",
+			"body_my": "လိပ် နှင့် ယုန် နှစ် ကောင် တို့ သည် ပြိုင်ပွဲ တစ် ခု ပြု လုပ် ကြ ၏။ ယုန် က မိမိ မြန် သည် ဟု ထင် ၍ စတင် ပြိုင် ပြီး မ ကြာ မီ အနား ၌ အိပ် ပျော် သွား ၏။"
+		},
+		{
+			"idx": 1,
+			"title": "ဇွဲ ၏ အောင်ပွဲ",
+			"body_my": "လိပ် မှာ ဖြည်း ဖြည်း ချင်း လမ်း လျှောက် ၍ မ ရပ် မ နား ဆက် လက် သွား ၏။ နောက် ဆုံး တွင် လိပ် က ဦး စွာ ပန်း တိုင် သို့ ရောက် ၍ ပြိုင်ပွဲ အောင် မြင် ၏။ ဇွဲ ရှိ သူ မှန် သမျှ အောင် မြင် ၏ ဟု ဆို ၏။"
+		}
+	]
+}

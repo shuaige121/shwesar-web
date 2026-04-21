@@ -1,0 +1,23 @@
+{
+	"slug": "demo-rainy-season",
+	"title_my": "မိုး ရာသီ",
+	"title_en": "The Rainy Season (demo)",
+	"author": "ShweSar Demo",
+	"language": "my",
+	"source": "demo",
+	"license": "demo",
+	"cover_url": null,
+	"description": "Demo essay about the rainy season. Placeholder text only.",
+	"chapters": [
+		{
+			"idx": 0,
+			"title": "မိုး ဦး",
+			"body_my": "ဇွန် လ ၏ ပထမ နေ့ တစ် နေ့။ မိုး ရွာ စ ပြု လာ သည်။ မိုး ရေ စက် တစ် စက် ကျ လာ တိုင်း မြေ ကြီး မှ နံ့သာ မြေ နံ့ ထွက် လာ သည်။ ကလေး များ သည် မိုး ရေ ထဲ တွင် ပျော်ရွှင် စွာ ဆော့ ကစား ကြ ၏။"
+		},
+		{
+			"idx": 1,
+			"title": "ညနေ ကုန်",
+			"body_my": "မိုး ရွာ ပြီး နောက် ကောင်း ကင် တွင် သက်တံ့ တန်း ပေါ် လာ သည်။ ရွာ သူ ရွာ သား များ သည် မိုး လွန် ဆည်း ဆာ တွင် ပေါက် ပန်း များ ကို ကြည့် ၍ စိတ် အေး ချမ်း သာ ကြ၏။"
+		}
+	]
+}

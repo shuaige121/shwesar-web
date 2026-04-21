@@ -1,0 +1,23 @@
+{
+	"slug": "welcome",
+	"title_my": "ရွှေစာ မှ ကြိုဆိုပါသည်",
+	"title_en": "Welcome to ShweSar",
+	"author": "ShweSar",
+	"language": "my",
+	"source": "demo",
+	"license": "demo",
+	"cover_url": "/brand/shwesar_logo.png",
+	"description": "Intro to the offline reader and audio courses.",
+	"chapters": [
+		{
+			"idx": 0,
+			"title": "ကြိုဆိုပါသည်",
+			"body_my": "မင်္ဂလာပါ။ ရွှေစာ ဖတ်စာပေသည် အင်တာနက် မရှိသည့် အချိန်တွင် ဖတ်ရှုနိုင်ရန် တည်ဆောက်ထားသည်။ ဤနေရာတွင် ဝတ္ထု၊ အသံစာအုပ်နှင့် သင်ခန်းစာများ ကို ရှာဖွေနိုင်ပါသည်။ စာဖတ်ခြင်း စတင်ရန် Reader သို့ သွားပါ။\n\nThis is a starter library so you can verify the Padauk font, scrolling, bookmarks, and offline storage. Replace these chapters with real content as you publish."
+		},
+		{
+			"idx": 1,
+			"title": "နည်းလမ်း",
+			"body_my": "စာအုပ် တစ်အုပ်ကို ဖွင့်ပါ။ စာလုံး အရွယ်အစားနှင့် အရောင် ပုံစံကို ပြောင်းနိုင်သည်။ မှတ်သားလိုသည့် နေရာတွင် Bookmark နှိပ်ပါ။ Library တွင် မှတ်ထားသော နေရာများ ပြန်ကြည့်နိုင်သည်။"
+		}
+	]
+}

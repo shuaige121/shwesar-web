@@ -1,0 +1,23 @@
+{
+	"slug": "demo-typography-test",
+	"title_my": "စာလုံး စမ်း သပ် ခြင်း",
+	"title_en": "Typography Test (demo)",
+	"author": "ShweSar Demo",
+	"language": "my",
+	"source": "demo",
+	"license": "demo",
+	"cover_url": null,
+	"description": "Test page for verifying Padauk shaping, numbers, punctuation, and theme contrast.",
+	"chapters": [
+		{
+			"idx": 0,
+			"title": "အက္ခရာ နှင့် ဂဏန်း",
+			"body_my": "က ခ ဂ ဃ င စ ဆ ဇ ဈ ည ဋ ဌ ဍ ဎ ဏ တ ထ ဒ ဓ န ပ ဖ ဗ ဘ မ ယ ရ လ ဝ သ ဟ ဠ အ။ ဂဏန်း များ ၁ ၂ ၃ ၄ ၅ ၆ ၇ ၈ ၉ ၁၀။ ပုဒ် ထီး ။ ပုဒ် မ ၊ နှင့် မေး ခွန်း မှတ် သည် မြန် မာ စာ ၏ အခြေခံ ဖြစ် ၏။"
+		},
+		{
+			"idx": 1,
+			"title": "စာ စီ စာ ကုံး",
+			"body_my": "ဤ စာ မျက် နှာ သည် Padauk ဖောင့် ၏ တွဲ စပ် ပုံ၊ စာ ကြောင်း ခြား အမြင့်၊ နှင့် အပြာ နှင့် အနက် အရောင် အကြား ဆန့် ကျင် ဘက် ကို စမ်း ရန် ဖြစ် သည်။ မြန် မာ စာ ဖတ် ရှု ရာ တွင် မျက်စိ ပင်ပန်း မှု မ ရှိ စေ ရန် line-height ကို ၁.၇ ထား ထား သည်။"
+		}
+	]
+}

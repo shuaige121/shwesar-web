@@ -1,0 +1,18 @@
+{
+	"slug": "demo-tea-shop",
+	"title_my": "လက်ဖက်ရည် ဆိုင်",
+	"title_en": "The Tea Shop (demo)",
+	"author": "ShweSar Demo",
+	"language": "my",
+	"source": "demo",
+	"license": "demo",
+	"cover_url": null,
+	"description": "Demo scene set in a Burmese tea shop. Placeholder text only.",
+	"chapters": [
+		{
+			"idx": 0,
+			"title": "တစ်ခွက် နှင့် တစ်ခွက်",
+			"body_my": "လက်ဖက်ရည် ဆိုင် ထဲ တွင် လူ ဆယ်ယောက် ခန့် ထိုင် နေ ကြ သည်။ စားပွဲ ထိုး လေး သည် လက်ဖက်ရည် ပူ ပူ ခွက် တစ် လုံး ကို စားပွဲ ပေါ် တွင် ချ ထား ပေး လိုက်သည်။ မိတ်ဆွေ နှစ် ယောက် တို့ သည် နေ့လည် စီး ပွား ရေး ကိစ္စ များ ကို ဆွေး နွေး နေ ကြ ပါ သည်။"
+		}
+	]
+}

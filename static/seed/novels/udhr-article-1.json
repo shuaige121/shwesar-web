@@ -1,0 +1,18 @@
+{
+	"slug": "udhr-article-1",
+	"title_my": "လူ့အခွင့်အရေး အပိုဒ် ၁",
+	"title_en": "UDHR Article 1",
+	"author": "United Nations",
+	"language": "my",
+	"source": "udhr",
+	"license": "public-domain",
+	"cover_url": null,
+	"description": "Universal Declaration of Human Rights, Article 1 (Burmese).",
+	"chapters": [
+		{
+			"idx": 0,
+			"title": "အပိုဒ် ၁",
+			"body_my": "လူတိုင်းသည် တူညီ လွတ်လပ်သော ဂုဏ်သိက္ခာ ဖြင့်လည်းကောင်း၊ တူညီ လွတ်လပ်သော အခွင့်အရေးများ ဖြင့်လည်းကောင်း မွေးဖွား လာသူများ ဖြစ်သည်။ ထိုသူတို့၌ ပိုင်းခြား ဝေဖန်တတ်သော ဉာဏ်နှင့် ကျင့်ဝတ် သိတတ်သော စိတ်တို့ ရှိကြ၍ ထိုသူတို့သည် အချင်းချင်း မေတ္တာထား၍ ဆက်ဆံ ကျင့်သုံးသင့်၏။"
+		}
+	]
+}

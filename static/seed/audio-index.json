@@ -1,0 +1,8 @@
+{
+	"version": 1,
+	"updated_at": "2026-04-21",
+	"items": [
+		{ "slug": "audiobook-tortoise-hare", "kind": "audiobook" },
+		{ "slug": "course-padauk-talk", "kind": "course" }
+	]
+}

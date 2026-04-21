@@ -1,0 +1,17 @@
+{
+	"slug": "course-padauk-talk",
+	"kind": "course",
+	"title_my": "ပိတောက် သင်ခန်းစာ",
+	"title_en": "Padauk Talks — short course (demo)",
+	"author": "ShweSar Demo TTS",
+	"language": "my",
+	"source": "demo",
+	"license": "demo",
+	"cover_url": "/brand/shwesar_logo.png",
+	"description": "Three-part demo course. Designed for hands-busy listeners — works in the background with lock-screen controls.",
+	"chapters": [
+		{ "idx": 0, "title": "နိဒါန်း", "url": "/seed/audio/course-padauk-talk/01.mp3", "duration_s": 40 },
+		{ "idx": 1, "title": "သင်ခန်းစာ ၁", "url": "/seed/audio/course-padauk-talk/02.mp3", "duration_s": 34 },
+		{ "idx": 2, "title": "သင်ခန်းစာ ၂", "url": "/seed/audio/course-padauk-talk/03.mp3", "duration_s": 38 }
+	]
+}

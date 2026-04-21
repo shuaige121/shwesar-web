@@ -31,11 +31,38 @@ Findings + fixes from the M1 pass:
 8. **PWA install prompt listener needed cleanup.** The `beforeinstallprompt` listener is removed in the layout's `onMount` cleanup so it does not leak between hot-reloads in dev.
 9. **Bookmark scroll percentage could divide by zero on very short chapters.** Guard added: when the document is not scrollable, percentage defaults to `1` (treat as fully read).
 
-## Verification
+## Verification (after M1)
 
 ```
 npm run check     -> 394 files, 0 errors, 0 warnings
 npm run lint      -> clean (prettier + eslint)
 npm test          -> 3 files, 20/20 tests pass
 npm run build     -> success (static adapter, output in build/)
+```
+
+## M2 Self-Audit (Audio Player + Courses)
+
+Findings + fixes from the M2 pass:
+
+1. **`@types/howler` missing.** Howler's runtime works without types but svelte-check failed. Fix: added `@types/howler` to devDependencies; type-only usage everywhere stays explicit.
+2. **Position-save loop would write every tick.** Filtered: only persist when `|delta| > 1s` — keeps Dexie quiet during normal playback while still resuming within ~1s precision.
+3. **Mini player would overlap last-line of content on mobile.** Fix: layout root gets `pb-24` so a fixed mini player at bottom does not cover content.
+4. **Media Session metadata never reset on `stop()`.** Fix: `stop()` clears `mediaSession.metadata` and `playbackState` so a completed/closed session stops controlling the lock screen.
+5. **Auto-advance on chapter end could loop the same audio.** Fix: explicit `void skipChapter(1)` after persisting `position_s = 0`; `skipChapter` calls `stop()` when there is no next chapter.
+6. **`location.assign` in /audiobooks would full-reload mid-playback** — but we don't do that; navigation between detail and chapters uses Svelte `goto` indirectly via `<a href>` which is fine since the player lives in the layout (persists across nav).
+7. **Audio seed could double-write on reload.** Fix: `isAudioSeeded()` short-circuits, mirrors the text seed loader.
+8. **Courses page reused `/audiobooks/[slug]` detail.** Decision: same schema, same UX — keep one detail page. Detail page detects `kind === 'course'` for the back-link label.
+
+## Vulnerability override (post-M1)
+
+`npm audit` flagged `cookie <0.7.0` (low, via SvelteKit) and `serialize-javascript <=7.0.4` (high, via vite-plugin-pwa → workbox-build → @rollup/plugin-terser). The fix-with-`--force` would downgrade `vite-plugin-pwa` to 0.19.8 and SvelteKit to 0.0.30 — neither is acceptable. Both are build-time-only deps in our pipeline. Mitigation: `package.json#overrides` pins `cookie ^0.7.2` and `serialize-javascript ^7.0.5`. Result: `npm audit` returns 0 vulnerabilities.
+
+## Verification (after M2)
+
+```
+npm run check     -> 400 files, 0 errors, 0 warnings
+npm run lint      -> clean
+npm test          -> 4 files, 24/24 tests pass
+npm run build     -> success
+npm audit         -> 0 vulnerabilities
 ```

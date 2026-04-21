@@ -17,4 +17,25 @@ Findings fixed in this scaffold:
 11. PWA Workbox patterns initially targeted the wrong SvelteKit output root. Replaced them with root-relative client output patterns.
 12. Capacitor `webDir` needed to match the build output. Switched to SvelteKit static adapter output in `build`.
 
-Verification commands for this audit are recorded in the final run output, alongside build and check results.
+## M1 Self-Audit (Reader MVP)
+
+Findings + fixes from the M1 pass:
+
+1. **Sentence splitter dropped boundary-only fragments incorrectly.** Repeated `။။` produced an extra empty `။` entry. Fix: trim the inner buffer before deciding whether to push, and only re-attach the boundary when there is real content (`src/lib/myanmar-text/index.ts`).
+2. **Route params typed `string | undefined` under stricter SvelteKit types.** `slug` and `idx` checks needed defensive defaults to satisfy `noUncheckedIndexedAccess`. Fix: `slug = $derived($page.params.slug ?? '')`, plus an early-return `notFound` branch when slug is empty (`src/routes/reader/[slug]/+page.svelte`, `[slug]/[idx]/+page.svelte`).
+3. **Unused `onMount` import after switching to `$effect`.** Fix: removed the import.
+4. **`Map` triggered `svelte/prefer-svelte-reactivity`.** Reactive lookup map for the library grid needed `SvelteMap`. Fix: imported `SvelteMap` from `svelte/reactivity`.
+5. **Hard navigations between chapters bypassed SvelteKit and reset scroll restore timing.** `location.assign(...)` was a full page load. Fix: switched prev/next chapter buttons to `goto()` from `$app/navigation`.
+6. **`svelte/no-navigation-without-resolve` lint rule fired on every `<a href>`.** This rule is meant for apps with a base path; this app has none. Fix: disabled the rule globally; revisit if a base path is added later.
+7. **Seed loader could leave the reader empty if the network failed mid-fetch.** Per-novel fetch failures are skipped silently inside `seedFromStatic`; a top-level `catch` in the layout records the error in a small banner so the user can retry. Acceptable trade-off: partial library beats none.
+8. **PWA install prompt listener needed cleanup.** The `beforeinstallprompt` listener is removed in the layout's `onMount` cleanup so it does not leak between hot-reloads in dev.
+9. **Bookmark scroll percentage could divide by zero on very short chapters.** Guard added: when the document is not scrollable, percentage defaults to `1` (treat as fully read).
+
+## Verification
+
+```
+npm run check     -> 394 files, 0 errors, 0 warnings
+npm run lint      -> clean (prettier + eslint)
+npm test          -> 3 files, 20/20 tests pass
+npm run build     -> success (static adapter, output in build/)
+```

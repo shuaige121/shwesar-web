@@ -2,6 +2,7 @@ import Dexie, { type Table } from 'dexie';
 
 export type ContentSource = 'udhr' | 'demo' | 'folktale' | 'user';
 export type ContentLicense = 'public-domain' | 'cc0' | 'cc-by' | 'demo' | 'unknown';
+export type AudioKind = 'audiobook' | 'course';
 
 export interface Novel {
 	id?: number;
@@ -42,11 +43,45 @@ export interface Bookmark {
 	created_at: number;
 }
 
+export interface AudioItem {
+	id?: number;
+	slug: string;
+	kind: AudioKind;
+	title_my: string;
+	title_en: string;
+	author: string;
+	language: string;
+	cover_url: string | null;
+	description: string;
+	source: ContentSource;
+	license: ContentLicense;
+	created_at: number;
+}
+
+export interface AudioChapter {
+	id?: number;
+	item_id: number;
+	idx: number;
+	title: string;
+	url: string;
+	duration_s: number;
+}
+
+export interface AudioProgress {
+	item_id: number;
+	chapter_idx: number;
+	position_s: number;
+	updated_at: number;
+}
+
 export class ShwesarDB extends Dexie {
 	novels!: Table<Novel, number>;
 	chapters!: Table<Chapter, number>;
 	progress!: Table<Progress, number>;
 	bookmarks!: Table<Bookmark, number>;
+	audio_items!: Table<AudioItem, number>;
+	audio_chapters!: Table<AudioChapter, number>;
+	audio_progress!: Table<AudioProgress, number>;
 
 	constructor(name = 'shwesar') {
 		super(name);
@@ -55,6 +90,11 @@ export class ShwesarDB extends Dexie {
 			chapters: '++id, &[novel_id+idx], novel_id',
 			progress: 'novel_id, updated_at',
 			bookmarks: '++id, novel_id, [novel_id+chapter_idx], created_at'
+		});
+		this.version(2).stores({
+			audio_items: '++id, &slug, kind, created_at',
+			audio_chapters: '++id, &[item_id+idx], item_id',
+			audio_progress: 'item_id, updated_at'
 		});
 	}
 }
@@ -160,4 +200,72 @@ export const upsertChapters = async (
 
 export const isSeeded = async (): Promise<boolean> => {
 	return (await getDb().novels.count()) > 0;
+};
+
+export const isAudioSeeded = async (): Promise<boolean> => {
+	return (await getDb().audio_items.count()) > 0;
+};
+
+export const listAudioItems = async (kind?: AudioKind): Promise<AudioItem[]> => {
+	const table = getDb().audio_items;
+	if (kind === undefined) return table.orderBy('created_at').reverse().toArray();
+	return table.where('kind').equals(kind).reverse().sortBy('created_at');
+};
+
+export const getAudioItem = async (slug: string): Promise<AudioItem | undefined> => {
+	return getDb().audio_items.where('slug').equals(slug).first();
+};
+
+export const listAudioChapters = async (itemId: number): Promise<AudioChapter[]> => {
+	return getDb().audio_chapters.where('item_id').equals(itemId).sortBy('idx');
+};
+
+export const getAudioChapter = async (
+	itemId: number,
+	idx: number
+): Promise<AudioChapter | undefined> => {
+	return getDb().audio_chapters.where('[item_id+idx]').equals([itemId, idx]).first();
+};
+
+export const saveAudioProgress = async (
+	itemId: number,
+	chapterIdx: number,
+	positionS: number
+): Promise<void> => {
+	await getDb().audio_progress.put({
+		item_id: itemId,
+		chapter_idx: chapterIdx,
+		position_s: positionS,
+		updated_at: Date.now()
+	});
+};
+
+export const getAudioProgress = async (itemId: number): Promise<AudioProgress | undefined> => {
+	return getDb().audio_progress.get(itemId);
+};
+
+export const upsertAudioItem = async (
+	item: Omit<AudioItem, 'id' | 'created_at'> & { created_at?: number }
+): Promise<number> => {
+	const existing = await getAudioItem(item.slug);
+	const created_at = item.created_at ?? Date.now();
+	if (existing?.id) {
+		await getDb().audio_items.update(existing.id, { ...item, created_at });
+		return existing.id;
+	}
+	return getDb().audio_items.add({ ...item, created_at });
+};
+
+export const upsertAudioChapters = async (
+	itemId: number,
+	chapters: Omit<AudioChapter, 'id' | 'item_id'>[]
+): Promise<void> => {
+	const rows: AudioChapter[] = chapters.map((c) => ({
+		item_id: itemId,
+		idx: c.idx,
+		title: c.title,
+		url: c.url,
+		duration_s: c.duration_s
+	}));
+	await getDb().audio_chapters.bulkPut(rows);
 };

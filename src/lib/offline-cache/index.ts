@@ -3,4 +3,4 @@ export type OfflineStatus = 'unknown' | 'available' | 'downloading' | 'ready' | 
 export const initialOfflineStatus: OfflineStatus = 'unknown';
 
 export * from './db';
-export { seedFromStatic } from './seed';
+export { seedFromStatic, seedAudioFromStatic } from './seed';

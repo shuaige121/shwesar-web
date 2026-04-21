@@ -9,3 +9,12 @@ export const createReaderPosition = (itemId: string): ReaderPosition => ({
 	chapterIndex: 0,
 	scrollOffset: 0
 });
+
+export * from './progress';
+export * from './font-settings';
+export {
+	splitMyanmarSentences,
+	splitMyanmarPhrases,
+	countMyanmarSentences,
+	estimateReadingMinutes
+} from '../myanmar-text';

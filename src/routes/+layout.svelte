@@ -3,7 +3,8 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { seedFromStatic } from '$lib/offline-cache';
+	import { seedFromStatic, seedAudioFromStatic } from '$lib/offline-cache';
+	import MiniPlayer from '$lib/player/MiniPlayer.svelte';
 
 	let { children } = $props();
 
@@ -20,7 +21,7 @@
 		};
 		window.addEventListener('beforeinstallprompt', onPrompt);
 
-		seedFromStatic().catch((err) => {
+		Promise.all([seedFromStatic(), seedAudioFromStatic()]).catch((err) => {
 			seedError = err instanceof Error ? err.message : String(err);
 		});
 
@@ -49,7 +50,7 @@
 	<link rel="icon" href="/brand/shwesar_logo.png" />
 </svelte:head>
 
-<div class="min-h-screen bg-brand-paper text-brand-ink">
+<div class="min-h-screen bg-brand-paper pb-24 text-brand-ink">
 	<header class="sticky top-0 z-20 border-b border-slate-200 bg-brand-paper/90 backdrop-blur">
 		<div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
 			<a href="/" class="flex items-center gap-2" aria-label="ShweSar home">
@@ -82,12 +83,14 @@
 		</div>
 		{#if seedError}
 			<p class="bg-amber-100 px-4 py-1 text-xs text-amber-900">
-				Seed load failed: {seedError}. Reader may be empty until you reload.
+				Seed load failed: {seedError}. Library may be empty until you reload.
 			</p>
 		{/if}
 	</header>
 
 	<main>{@render children()}</main>
+
+	<MiniPlayer />
 
 	<footer class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500">
 		<p>ShweSar — offline reading and audio courses for Myanmar.</p>
